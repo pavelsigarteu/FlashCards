@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+
+	<meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>FlashCards</title>
+
+
+
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" >
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" ></script>
+
+  </head>
+  <body>
+    <div class="container-fluid">
+		<div class="row">
+     	     <div class="col-xs-6 col-sm-6"><a data-toggle="modal" data-pre="cow" data-count="6" class="open-dialog" href="#show-sample-dialog"><img src="A1.jpg" style="width: 100%;"></img></a></div>
+   			 <div class="col-xs-6 col-sm-6"><a data-toggle="modal" data-pre="pig" data-count="3" class="open-dialog" href="#show-sample-dialog"><img src="A2.jpg" style="width: 100%;"></img></a></div>
+  		</div>
+  		<div class="row">
+     	       <div class="col-xs-6 col-sm-6"><a data-toggle="modal" data-pre="donkey" data-count="2" class="open-dialog" href="#show-sample-dialog"><img src="B1.jpg" style="width: 100%;"></img></a></div>
+    		   <div class="col-xs-6 col-sm-6"><a data-toggle="modal" data-pre="dog" data-count="7" class="open-dialog" href="#show-sample-dialog"><img src="B2.jpg" style="width: 100%;"></img></a></div>
+  		</div>
+  		<div class="row">
+     	     <div class="col-xs-6 col-sm-6"><a data-toggle="modal" data-pre="horse" data-count="4" class="open-dialog" href="#show-sample-dialog"><img src="C1.jpg" style="width: 100%;"></img></a></div>
+   			 <div class="col-xs-6 col-sm-6"><a data-toggle="modal" data-pre="sheep" data-count="4" class="open-dialog" href="#show-sample-dialog"><img src="C2.jpg" style="width: 100%;"></img></a></div>
+  		</div>
+	</div>
+
+
+ 
+
+    
+    
+<!-- categories -->    
+
+
+
+<!-- Modal -->
+<div class="modal fade" id="show-sample-dialog" tabindex="-1" role="dialog" >
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-body">
+        <img src="" id="modal-image" data-dismiss="modal" style="width: 100%;"></img>
+      </div>
+    </div>
+  </div>
+</div>
+	
+<script>
+ $(document).on("click",".open-dialog", function() {
+ 	var pre = $(this).data('pre');
+ 	var count = $(this).data('count');
+ 	var randomSrc = Math.floor((Math.random() * count) +1);
+ 	$(".modal-body #modal-image").attr('src', pre+randomSrc+'.jpg');
+ });
+</script>
+
+  </body>
+</html>
