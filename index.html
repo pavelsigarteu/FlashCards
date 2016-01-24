@@ -30,8 +30,8 @@
   		</div>
 	</div>
 
-
- 
+<audio id="audio_dog" src="audio_dog.mp3" preload="true"></audio>
+<audio id="audio_cow" src="audio_cow.mp3" preload="true"></audio>
 
     
     
@@ -56,6 +56,7 @@
  	var count = $(this).data('count');
  	var randomSrc = Math.floor((Math.random() * count) +1);
  	$(".modal-body #modal-image").attr('src', pre+randomSrc+'.jpg');
+ 	document.getElementById('audio_'+pre).play();
  });
 </script>
 
