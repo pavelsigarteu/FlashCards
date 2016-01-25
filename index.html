@@ -12,21 +12,41 @@
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
 
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" ></script>
+	
+	<script>
+		var clickCounter=1;
+		
+		function set_body_height(){
+			
+			var h = $(window).height();
+			
+			var elements = document.getElementsByClassName("img_canvas");
+			for(var i=0; i<elements.length; i++){
+				elements[i].style.height = (h/3) + 'px';
+			}
+		}
+		
+		$(document).ready(function(){
+			set_body_height();
+			$(window).bind('resize', function() { set_body_height(); });
+		});
+		
+	</script>
 
   </head>
   <body>
     <div class="container-fluid">
 		<div class="row">
-     	     <div class="col-xs-6 col-sm-6"><a data-toggle="modal" data-pre="cow" data-count="6" class="open-dialog" href="#show-sample-dialog"><img src="A1.jpg" style="width: 100%;"></img></a></div>
-   			 <div class="col-xs-6 col-sm-6"><a data-toggle="modal" data-pre="pig" data-count="3" class="open-dialog" href="#show-sample-dialog"><img src="A2.jpg" style="width: 100%;"></img></a></div>
+     	     <div class="col-xs-6 col-sm-6"><a data-toggle="modal" data-pre="cow" data-count="6" class="open-dialog" href="#show-sample-dialog"><img src="A1.jpg" class="img_canvas" style="width:auto;height:auto;"></img></a></div>
+   			 <div class="col-xs-6 col-sm-6"><a data-toggle="modal" data-pre="pig" data-count="3" class="open-dialog" href="#show-sample-dialog"><img src="A2.jpg" class="img_canvas" style="width:auto;height:auto;"></img></a></div>
   		</div>
   		<div class="row">
-     	       <div class="col-xs-6 col-sm-6"><a data-toggle="modal" data-pre="donkey" data-count="2" class="open-dialog" href="#show-sample-dialog"><img src="B1.jpg" style="width: 100%;"></img></a></div>
-    		   <div class="col-xs-6 col-sm-6"><a data-toggle="modal" data-pre="dog" data-count="7" class="open-dialog" href="#show-sample-dialog"><img src="B2.jpg" style="width: 100%;"></img></a></div>
+     	       <div class="col-xs-6 col-sm-6"><a data-toggle="modal" data-pre="donkey" data-count="2" class="open-dialog" href="#show-sample-dialog"><img src="B1.jpg" class="img_canvas" style="width:auto;height:auto;"></img></a></div>
+    		   <div class="col-xs-6 col-sm-6"><a data-toggle="modal" data-pre="dog" data-count="7" class="open-dialog" href="#show-sample-dialog"><img src="B2.jpg" class="img_canvas" style="width:auto;height:auto;"></img></a></div>
   		</div>
   		<div class="row">
-     	     <div class="col-xs-6 col-sm-6"><a data-toggle="modal" data-pre="horse" data-count="4" class="open-dialog" href="#show-sample-dialog"><img src="C1.jpg" style="width: 100%;"></img></a></div>
-   			 <div class="col-xs-6 col-sm-6"><a data-toggle="modal" data-pre="sheep" data-count="4" class="open-dialog" href="#show-sample-dialog"><img src="C2.jpg" style="width: 100%;"></img></a></div>
+     	     <div class="col-xs-6 col-sm-6"><a data-toggle="modal" data-pre="horse" data-count="4" class="open-dialog" href="#show-sample-dialog"><img src="C1.jpg" class="img_canvas" style="width:auto;height:auto;"></img></a></div>
+   			 <div class="col-xs-6 col-sm-6"><a data-toggle="modal" data-pre="sheep" data-count="4" class="open-dialog" href="#show-sample-dialog"><img src="C2.jpg" class="img_canvas" style="width:auto;height:auto;"></img></a></div>
   		</div>
 	</div>
 
@@ -54,8 +74,8 @@
  $(document).on("click",".open-dialog", function() {
  	var pre = $(this).data('pre');
  	var count = $(this).data('count');
- 	var randomSrc = Math.floor((Math.random() * count) +1);
- 	$(".modal-body #modal-image").attr('src', pre+randomSrc+'.jpg');
+ 	
+ 	$(".modal-body #modal-image").attr('src', pre+((clickCounter++)%count +1)+'.jpg');
  	document.getElementById('audio_'+pre).play();
  });
 </script>
