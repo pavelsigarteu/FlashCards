@@ -94,19 +94,27 @@
             src="D1.jpg" class="img_canvas" style="width: auto; height: auto;"></a>
         </div>
         <div class="ui-block-b">
-          <img src="D2.jpg" class="img_canvas" style="width: auto; height: auto;">
+        <a href="#dialog" data-rel="dialog" data-pre="car" data-count="3" class="open-dialog" data-transition="flip"><img
+            src="D2.jpg" class="img_canvas" style="width: auto; height: auto;"></a>
+       
         </div>
         <div class="ui-block-a">
-          <img src="D3.jpg" class="img_canvas" style="width: auto; height: auto;">
+        <a href="#dialog" data-rel="dialog" data-pre="plane" data-count="3" class="open-dialog" data-transition="flip"><img
+            src="D3.jpg" class="img_canvas" style="width: auto; height: auto;"></a>
+        
         </div>
         <div class="ui-block-b">
-          <img src="D4.jpg" class="img_canvas" style="width: auto; height: auto;">
+         <a href="#dialog" data-rel="dialog" data-pre="bike" data-count="2" class="open-dialog" data-transition="flip"><img
+            src="D4.jpg" class="img_canvas" style="width: auto; height: auto;"></a>
+         
         </div>
         <div class="ui-block-a">
-          <img src="D5.jpg" class="img_canvas" style="width: auto; height: auto;">
+         <a href="#dialog" data-rel="dialog" data-pre="car" data-count="3" class="open-dialog" data-transition="flip"><img
+            src="D5.jpg" class="img_canvas" style="width: auto; height: auto;"></a>
         </div>
         <div class="ui-block-b">
-          <img src="D6.jpg" class="img_canvas" style="width: auto; height: auto;">
+           <a href="#dialog" data-rel="dialog" data-pre="bus" data-count="1" class="open-dialog" data-transition="flip"><img
+            src="D6.jpg" class="img_canvas" style="width: auto; height: auto;"></a>
         </div>
 
       </div>
@@ -139,15 +147,6 @@
   <!-- /page -->
 
 
-  <audio id="audio_dog" src="audio_dog.mp3" preload="auto"></audio>
-  <audio id="audio_cow" src="audio_cow.mp3" preload="auto"></audio>
-  <audio id="audio_donkey" src="audio_donkey.mp3" preload="auto"></audio>
-  <audio id="audio_horse" src="audio_horse.mp3" preload="auto"></audio>
-  <audio id="audio_pig" src="audio_pig.mp3" preload="auto"></audio>
-  <audio id="audio_sheep" src="audio_sheep.mp3" preload="auto"></audio>
-  
-  <audio id="audio_train" src="audio_train.mp3" preload="auto"></audio>
-
 
 
 
@@ -161,7 +160,9 @@
 
 						document.getElementById('modal-image').src = 'res/' + pre
 								+ ((clickCounter++) % count + 1) + '.jpg';
-						document.getElementById('audio_' + pre).play();
+						
+						var audio = new Audio('audio_' + pre+'.mp3');
+						audio.play();
 					});
 		</script>
 
