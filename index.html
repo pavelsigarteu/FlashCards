@@ -1,88 +1,169 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
 
-	<meta name="apple-mobile-web-app-capable" content="yes" />
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>FlashCards</title>
+<head>
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<meta name="viewport" content="width=device-width, initial-scale=1">
 
+<title>FlashCards2</title>
 
-
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" >
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-
-	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" ></script>
-	
-	<script>
-		var clickCounter=1;
-		
-		function set_body_height(){
-			
-			var h = $(window).height();
-			
-			var elements = document.getElementsByClassName("img_canvas");
-			for(var i=0; i<elements.length; i++){
-				elements[i].style.height = (h/3) + 'px';
-			}
-		}
-		
-		$(document).ready(function(){
-			set_body_height();
-			$(window).bind('resize', function() { set_body_height(); });
-		});
-		
-	</script>
-
-  </head>
-  <body>
-    <div class="container-fluid">
-		<div class="row">
-     	     <div class="col-xs-6 col-sm-6"><a data-toggle="modal" data-pre="cow" data-count="6" class="open-dialog" href="#show-sample-dialog"><img src="A1.jpg" class="img_canvas" style="width:auto;height:auto;"></img></a></div>
-   			 <div class="col-xs-6 col-sm-6"><a data-toggle="modal" data-pre="pig" data-count="3" class="open-dialog" href="#show-sample-dialog"><img src="A2.jpg" class="img_canvas" style="width:auto;height:auto;"></img></a></div>
-  		</div>
-  		<div class="row">
-     	       <div class="col-xs-6 col-sm-6"><a data-toggle="modal" data-pre="donkey" data-count="2" class="open-dialog" href="#show-sample-dialog"><img src="B1.jpg" class="img_canvas" style="width:auto;height:auto;"></img></a></div>
-    		   <div class="col-xs-6 col-sm-6"><a data-toggle="modal" data-pre="dog" data-count="7" class="open-dialog" href="#show-sample-dialog"><img src="B2.jpg" class="img_canvas" style="width:auto;height:auto;"></img></a></div>
-  		</div>
-  		<div class="row">
-     	     <div class="col-xs-6 col-sm-6"><a data-toggle="modal" data-pre="horse" data-count="4" class="open-dialog" href="#show-sample-dialog"><img src="C1.jpg" class="img_canvas" style="width:auto;height:auto;"></img></a></div>
-   			 <div class="col-xs-6 col-sm-6"><a data-toggle="modal" data-pre="sheep" data-count="4" class="open-dialog" href="#show-sample-dialog"><img src="C2.jpg" class="img_canvas" style="width:auto;height:auto;"></img></a></div>
-  		</div>
-	</div>
-
-<audio id="audio_dog" src="audio_dog.mp3" preload="true"></audio>
-<audio id="audio_cow" src="audio_cow.mp3" preload="true"></audio>
-<audio id="audio_donkey" src="audio_donkey.mp3" preload="true"></audio>
-<audio id="audio_horse" src="audio_horse.mp3" preload="true"></audio>
-<audio id="audio_pig" src="audio_pig.mp3" preload="true"></audio>
-<audio id="audio_sheep" src="audio_sheep.mp3" preload="true"></audio>
-
-    
-    
-<!-- categories -->    
+<link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css" />
+<script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
+<script src="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
 
 
 
-<!-- Modal -->
-<div class="modal fade" id="show-sample-dialog" tabindex="-1" role="dialog" >
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-body">
-        <img src="" id="modal-image" data-dismiss="modal" style="width: 100%;"></img>
-      </div>
-    </div>
-  </div>
-</div>
-	
 <script>
- $(document).on("click",".open-dialog", function() {
- 	var pre = $(this).data('pre');
- 	var count = $(this).data('count');
- 	
- 	$(".modal-body #modal-image").attr('src', pre+((clickCounter++)%count +1)+'.jpg');
- 	document.getElementById('audio_'+pre).play();
- });
+	var clickCounter = 1;
+
+	function set_body_height() {
+
+		var h = $(window).height() - 55;
+
+		var elements = document.getElementsByClassName("img_canvas");
+		for (var i = 0; i < elements.length; i++) {
+			elements[i].style.height = (h / 3) + 'px';
+		}
+	}
+
+	$(document).ready(function() {
+		set_body_height();
+		$(window).bind('resize', function() {
+			set_body_height();
+		});
+	});
 </script>
 
-  </body>
+</head>
+<body>
+
+  <div data-role="page" id="animals" data-theme="a">
+
+
+    <div role="main" class="ui-content">
+      <div class="ui-grid-a">
+        <div class="ui-block-a">
+          <a href="#dialog" data-rel="dialog" data-pre="cow" data-count="6" class="open-dialog" data-transition="flip"><img
+            src="A1.jpg" class="img_canvas" style="width: auto; height: auto;"></a>
+        </div>
+        <div class="ui-block-b">
+          <a href="#dialog" data-rel="dialog" data-pre="pig" data-count="3" class="open-dialog" data-transition="flip"><img
+            src="A2.jpg" class="img_canvas" style="width: auto; height: auto;"></a>
+        </div>
+        <div class="ui-block-a">
+          <a href="#dialog" data-rel="dialog" data-pre="donkey" data-count="2" class="open-dialog" data-transition="flip"><img
+            src="B1.jpg" class="img_canvas" style="width: auto; height: auto;"></a>
+        </div>
+        <div class="ui-block-b">
+          <a href="#dialog" data-rel="dialog" data-pre="dog" data-count="7" class="open-dialog" data-transition="flip"><img
+            src="B2.jpg" class="img_canvas" style="width: auto; height: auto;"></a>
+        </div>
+        <div class="ui-block-a">
+          <a href="#dialog" data-rel="dialog" data-pre="horse" data-count="4" class="open-dialog" data-transition="flip"><img
+            src="C1.jpg" class="img_canvas" style="width: auto; height: auto;"></a>
+        </div>
+        <div class="ui-block-b">
+          <a href="#dialog" data-rel="dialog" data-pre="sheep" data-count="4" class="open-dialog" data-transition="flip"><img
+            src="C2.jpg" class="img_canvas" style="width: auto; height: auto;"></a>
+        </div>
+      </div>
+      <!-- /grid-a -->
+    </div>
+
+        <div data-role="footer" data-id="foo1" data-position="fixed">
+      <div data-role="navbar" data-iconpos="left">
+        <ul>
+          <li><a href="#animals" class="ui-btn-active ui-state-persist" data-icon="grid">Animals</a></li>
+          <li><a href="#cars"  data-icon="gear">Cars</a></li>
+        </ul>
+      </div>
+      <!-- /navbar -->
+    </div>
+    <!-- /footer -->
+
+  </div>
+  <!-- /page -->
+
+
+  <div data-role="page" id="cars" data-theme="a">
+
+    <div role="main" class="ui-content">
+      <div class="ui-grid-a">
+        <div class="ui-block-a">
+          <a href="#dialog" data-rel="dialog" data-pre="train" data-count="6" class="open-dialog" data-transition="flip"><img
+            src="D1.jpg" class="img_canvas" style="width: auto; height: auto;"></a>
+        </div>
+        <div class="ui-block-b">
+          <img src="D2.jpg" class="img_canvas" style="width: auto; height: auto;">
+        </div>
+        <div class="ui-block-a">
+          <img src="D3.jpg" class="img_canvas" style="width: auto; height: auto;">
+        </div>
+        <div class="ui-block-b">
+          <img src="D4.jpg" class="img_canvas" style="width: auto; height: auto;">
+        </div>
+        <div class="ui-block-a">
+          <img src="D5.jpg" class="img_canvas" style="width: auto; height: auto;">
+        </div>
+        <div class="ui-block-b">
+          <img src="D6.jpg" class="img_canvas" style="width: auto; height: auto;">
+        </div>
+
+      </div>
+      <!-- /grid-a -->
+    </div>
+
+    <div data-role="footer" data-id="foo2" data-position="fixed">
+      <div data-role="navbar" data-iconpos="left">
+        <ul>
+          <li><a href="#animals" data-icon="grid">Animals</a></li>
+          <li><a href="#cars" class="ui-btn-active ui-state-persist" data-icon="gear">Cars</a></li>
+        </ul>
+      </div>
+      <!-- /navbar -->
+    </div>
+    <!-- /footer -->
+  </div>
+  <!-- /page -->
+
+
+
+
+  <div data-role="page" id="dialog" data-theme="a">
+
+    
+      <a href="#" data-rel="back"><img src="" id="modal-image" style="width: 100%;"></img></a>
+
+
+  </div>
+  <!-- /page -->
+
+
+  <audio id="audio_dog" src="audio_dog.mp3" preload="auto"></audio>
+  <audio id="audio_cow" src="audio_cow.mp3" preload="auto"></audio>
+  <audio id="audio_donkey" src="audio_donkey.mp3" preload="auto"></audio>
+  <audio id="audio_horse" src="audio_horse.mp3" preload="auto"></audio>
+  <audio id="audio_pig" src="audio_pig.mp3" preload="auto"></audio>
+  <audio id="audio_sheep" src="audio_sheep.mp3" preload="auto"></audio>
+  
+  <audio id="audio_train" src="audio_train.mp3" preload="auto"></audio>
+
+
+
+
+  <script>
+			$(document).on(
+					"click",
+					".open-dialog",
+					function() {
+						var pre = $(this).data('pre');
+						var count = $(this).data('count');
+
+						document.getElementById('modal-image').src = '' + pre
+								+ ((clickCounter++) % count + 1) + '.jpg';
+						document.getElementById('audio_' + pre).play();
+					});
+		</script>
+
+</body>
 </html>
