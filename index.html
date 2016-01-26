@@ -159,7 +159,7 @@
 						var pre = $(this).data('pre');
 						var count = $(this).data('count');
 
-						document.getElementById('modal-image').src = '' + pre
+						document.getElementById('modal-image').src = 'res/' + pre
 								+ ((clickCounter++) % count + 1) + '.jpg';
 						document.getElementById('audio_' + pre).play();
 					});
